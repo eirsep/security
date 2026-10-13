@@ -352,7 +352,10 @@ notifications_read_access:
     - 'cluster:admin/opensearch/notifications/configs/get'
     - 'cluster:admin/opensearch/notifications/features'
 
-# Allows users to send messages through existing Notifications channels
+# Allows users to send messages through existing Notifications channels.
+# Unless channels are filtered by backend roles or protected by resource sharing, this covers every channel.
+# Under resource sharing, the channel (and an email channel's account and recipient groups) must also be
+# shared with the user at the notifications_send_only access level or higher.
 notifications_send_access:
   reserved: true
   cluster_permissions:
